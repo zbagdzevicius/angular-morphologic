@@ -10,20 +10,29 @@
   </mat-radio-group>
   <div>Pasirinktas filtras: {{chosenFilter}}</div>
 
+  <h2>Keisti dydį</h2>
+  <mat-form-field>
+    <input #xAxis matInput placeholder="X ašis" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <input #yAxis matInput placeholder="Y ašis" type="number">
+  </mat-form-field>
+  <button (click)="mainValues=generateFormGroup({columns: xAxis.value, rows: yAxis.value})">Keisti</button>
+
   <h2>Reikšmės</h2>
   <table class="mat-elevation-z8" [formGroup]="mainValues">
-    <tr *ngFor="let row of mainValues.get('values').controls">
+    <tr *ngFor="let row of mainValues.get('values')['controls']">
       <td *ngFor="let column of row.controls">
-        <input class="square" matInput [formControl]="column" type="number">
+        <input class="square" [formControl]="column" type="number">
       </td>
     </tr>
   </table>
 
   <h2 *ngIf="['dilation','erosion'].includes(chosenFilter)">Struktūrinis elementas</h2>
   <table class="mat-elevation-z8" [formGroup]="structuralElement" *ngIf="['dilation','erosion'].includes(chosenFilter)">
-    <tr *ngFor="let row of structuralElement.get('values').controls">
+    <tr *ngFor="let row of structuralElement.get('values')['controls']">
       <td *ngFor="let column of row.controls">
-        <input class="square" matInput [formControl]="column" type="number">
+        <input class="square" [formControl]="column" type="number">
       </td>
     </tr>
   </table>

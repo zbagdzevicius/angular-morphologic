@@ -8,8 +8,8 @@ import {MedianFilterService} from './services/median-filter.service';
 export type IFilter = 'median' | 'erosion' | 'dilation';
 
 export interface FormGroupSize {
-  rows: number;
-  columns: number;
+  rows: number | string;
+  columns: number | string;
 }
 
 export interface IFilterOptions {
@@ -46,9 +46,9 @@ export class AppComponent {
     }
 
     const rowsArray: FormArray = this.fb.array([]);
-    range(options.rows).forEach(() => {
+    range(Number(options.rows)).forEach(() => {
       const columnsArray: FormArray = this.fb.array([]);
-      range(options.columns).forEach(() => {
+      range(Number(options.columns)).forEach(() => {
         columnsArray.push(this.fb.control(''));
       });
       rowsArray.push(columnsArray);
