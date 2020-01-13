@@ -1,0 +1,30 @@
+.container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 100px !important;
+}
+
+table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+}
+
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 10px;
+
+  .radio-button:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+}
